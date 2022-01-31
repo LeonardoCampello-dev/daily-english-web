@@ -1,16 +1,18 @@
-import { Box, ChakraProvider, Heading, Text } from '@chakra-ui/react';
+import { Box, ChakraProvider, Heading } from '@chakra-ui/react';
+import { QueryClientProvider } from 'react-query';
 
 import { theme } from './theme/theme';
+import { queryClient } from './config/query-client';
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box>
-        <Heading color='cyan.100'>Chakra UI</Heading>
-
-        <Text>HEHEHE</Text>
-      </Box>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <Box>
+          <Heading color='gray.500'>Daily English</Heading>
+        </Box>
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 }
 

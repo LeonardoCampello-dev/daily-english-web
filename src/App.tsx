@@ -4,27 +4,16 @@ import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { queryClient } from './config/query-client';
-
-import { DailyEnglishIcon } from './components/presentational';
-import { CardsWrap, Card, HomePageDescription, MainWrap } from './components/layout';
-
+import { Router } from './main/router';
 import { theme } from './theme/theme';
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} position='top-left' />
+      <ReactQueryDevtools initialIsOpen={false} />
 
       <ChakraProvider theme={theme}>
-        <MainWrap>
-          <DailyEnglishIcon />
-
-          <HomePageDescription />
-
-          <CardsWrap>
-            <Card title='Words' imagePath='https://i.ibb.co/k5mTmK0/board-game.png' />
-          </CardsWrap>
-        </MainWrap>
+        <Router />
       </ChakraProvider>
     </QueryClientProvider>
   );

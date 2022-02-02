@@ -11,7 +11,7 @@ export const useDailyEnglishWordAPI = () => {
 
   return {
     endpoint,
-    get: () => get<Word[]>(),
+    get: () => get<Word>(),
     getOneById: (id: string) => getOneById<Word>(id),
     create: (data: WordCreateAndUpdateRequest) => create<WordCreateAndUpdateRequest, Word>(data),
     update: (id: string, data: WordCreateAndUpdateRequest) =>

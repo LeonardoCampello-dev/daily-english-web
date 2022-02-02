@@ -1,5 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react';
+
 import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 import { queryClient } from './config/query-client';
 
 import { DailyEnglishIcon } from './components/presentational';
@@ -10,6 +13,8 @@ import { theme } from './theme/theme';
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} position='top-left' />
+
       <ChakraProvider theme={theme}>
         <MainWrap>
           <DailyEnglishIcon />

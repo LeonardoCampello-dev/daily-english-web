@@ -1,16 +1,15 @@
 import { useCallback, useMemo } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, UseQueryResult } from 'react-query';
 
 import { Word } from '../../../../domain/entities';
+import { GetAllRequestResponse } from '../interfaces/get-all-request-response';
 import { useDailyEnglishWordAPI } from '../word/useDailyEnglishWordAPI';
 
-export const useGetWords = async () => {
+export const useGetWords = (): UseQueryResult<GetAllRequestResponse<Word>> => {
   const { endpoint, get } = useDailyEnglishWordAPI();
 
   const queryKey = useMemo(() => [endpoint], [endpoint]);
-  const queryFunction = useCallback(async () => get(), [get]);
+  const queryFn = useCallback(() => get(), [get]);
 
-  const query = useQuery<Word[], Error>(queryKey, queryFunction);
-
-  return query;
+  return useQuery<GetAllRequestResponse<Word>, Error>(queryKey, queryFn);
 };

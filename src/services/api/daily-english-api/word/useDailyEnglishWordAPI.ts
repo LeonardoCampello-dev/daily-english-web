@@ -1,13 +1,13 @@
-import { Word } from '../../../../domain/entities';
-import { WordCreateAndUpdateRequest } from './interfaces/word-create-and-update-request';
+import { Word } from '../../../../domain/entities'
+import { WordCreateAndUpdateRequest } from './interfaces/word-create-and-update-request'
 
-import { EndpointEnum } from '../../../../types/enums';
-import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI';
+import { EndpointEnum } from '../../../../types/enums'
+import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'
 
 export const useDailyEnglishWordAPI = () => {
-  const endpoint = EndpointEnum.WORDS;
+  const endpoint = EndpointEnum.WORDS
 
-  const { get, getOneById, create, update, deleteOneById } = useDailyEnglishAPI(endpoint);
+  const { get, getOneById, create, update, deleteOneById } = useDailyEnglishAPI(endpoint)
 
   return {
     endpoint,
@@ -17,5 +17,5 @@ export const useDailyEnglishWordAPI = () => {
     update: (id: string, data: WordCreateAndUpdateRequest) =>
       update<WordCreateAndUpdateRequest, Word>(id, data),
     deleteOneById: (id: string) => deleteOneById<Word>(id)
-  };
-};
+  }
+}

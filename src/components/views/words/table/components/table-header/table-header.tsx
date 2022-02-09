@@ -1,12 +1,12 @@
-import { Th, Thead, Tr } from '@chakra-ui/react';
-import { ComponentType } from 'react';
+import { Th, Thead, Tr } from '@chakra-ui/react'
+import { ComponentType } from 'react'
 
 export const TableHeader: ComponentType<TableHeaderProps> = ({ columns, hasActions = false }) => {
   return (
     <Thead>
       <Tr>
         {columns.map(column => (
-          <Th key={String(column)} px={2} textAlign='center'>
+          <Th key={String(column)} px={2} textAlign="center">
             {column}
           </Th>
         ))}
@@ -14,10 +14,10 @@ export const TableHeader: ComponentType<TableHeaderProps> = ({ columns, hasActio
         {hasActions && <Th>Actions</Th>}
       </Tr>
     </Thead>
-  );
-};
+  )
+}
 
 type TableHeaderProps = {
-  columns: (string | JSX.Element)[];
-  hasActions: boolean;
-};
+  columns: (string | JSX.Element)[]
+  hasActions: boolean
+}

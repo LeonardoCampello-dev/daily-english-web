@@ -1,4 +1,4 @@
-import { CardProps } from '../../layout';
+import { CardProps } from '../../layout'
 
 export const useHomeCards = (): CardProps[] => {
   return [
@@ -22,5 +22,5 @@ export const useHomeCards = (): CardProps[] => {
       title: 'Podcasts',
       redirectPath: '/podcasts'
     }
-  ];
-};
+  ]
+}

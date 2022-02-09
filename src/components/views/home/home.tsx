@@ -1,11 +1,11 @@
-import { ComponentType } from 'react';
+import { ComponentType } from 'react'
 
-import { Card, CardsWrap, HomePageDescription, MainWrap } from '../../layout';
-import { DailyEnglishIcon } from '../../presentational';
-import { useHomeCards } from './useHomeCards';
+import { Card, CardsWrap, HomePageDescription, MainWrap } from '../../layout'
+import { DailyEnglishIcon } from '../../presentational'
+import { useHomeCards } from './useHomeCards'
 
 export const Home: ComponentType = () => {
-  const cards = useHomeCards();
+  const cards = useHomeCards()
 
   return (
     <MainWrap>
@@ -14,10 +14,10 @@ export const Home: ComponentType = () => {
       <HomePageDescription />
 
       <CardsWrap>
-        {cards.map((card) => (
+        {cards.map(card => (
           <Card key={card.title} {...card} />
         ))}
       </CardsWrap>
     </MainWrap>
-  );
-};
+  )
+}

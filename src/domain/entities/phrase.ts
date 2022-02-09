@@ -1,18 +1,18 @@
-import { DateRecords, Tense } from '../../types';
+import { DateRecords, Tense } from '../../types'
 
 interface Entity {
-  id: string;
+  id: string
 
-  phrase: string;
-  translation: string;
+  phrase: string
+  translation: string
 
-  note?: string;
+  note?: string
 
-  tense?: Tense;
+  tense?: Tense
 
-  associatedWords?: string[];
+  associatedWords?: string[]
 
-  deleted: boolean;
+  deleted: boolean
 }
 
-export type Phrase = Entity & DateRecords;
+export type Phrase = Entity & DateRecords

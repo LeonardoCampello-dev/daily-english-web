@@ -1,1 +1,1 @@
-export type Endpoint = 'articles' | 'podcasts' | 'sentences' | 'songs' | 'words';
+export type Endpoint = 'articles' | 'podcasts' | 'sentences' | 'songs' | 'words'

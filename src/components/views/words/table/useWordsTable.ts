@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo } from 'react'
 
-import { useGetWords } from '../../../../services/api/daily-english-api/queries/useGetWords';
+import { useGetWords } from '../../../../services/api/daily-english-api/queries/useGetWords'
 
 export const useWordsTable = () => {
-  const columns = useMemo(() => ['Word', 'Translation', 'Note', 'Last update'], []);
+  const columns = useMemo(() => ['Word', 'Translation', 'Note', 'Last update'], [])
 
-  const { data, isLoading, isFetching, isError } = useGetWords();
+  const { data, isLoading, isFetching, isError } = useGetWords()
 
   return {
     columns,
@@ -13,5 +13,5 @@ export const useWordsTable = () => {
     isFetching,
     isLoading,
     data
-  };
-};
+  }
+}

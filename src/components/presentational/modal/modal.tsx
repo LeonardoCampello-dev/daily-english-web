@@ -7,9 +7,9 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { cloneElement, ComponentType, Fragment, isValidElement, ReactNode } from 'react';
+import { cloneElement, ComponentType, Fragment, isValidElement, ReactNode } from 'react'
 
 export const Modal: ComponentType<ModalProps> = ({
   children,
@@ -18,13 +18,13 @@ export const Modal: ComponentType<ModalProps> = ({
   footer,
   onOpenButton
 }) => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const { isOpen, onClose, onOpen } = useDisclosure()
 
   const generateOpenButtonWithAction = (button: ReactNode) => {
     if (isValidElement(button)) {
-      return cloneElement(button, { onClick: onOpen });
+      return cloneElement(button, { onClick: onOpen })
     }
-  };
+  }
 
   return (
     <Fragment>
@@ -43,12 +43,12 @@ export const Modal: ComponentType<ModalProps> = ({
         </ModalContent>
       </ChakraModal>
     </Fragment>
-  );
-};
+  )
+}
 
 type ModalProps = {
-  title: string;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | 'full';
-  onOpenButton: ReactNode;
-  footer?: ReactNode;
-};
+  title: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | 'full'
+  onOpenButton: ReactNode
+  footer?: ReactNode
+}

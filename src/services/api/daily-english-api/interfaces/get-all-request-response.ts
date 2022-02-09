@@ -1,4 +1,4 @@
 export interface GetAllRequestResponse<TResponse = object> {
-  items: TResponse[];
-  count: number;
+  items: TResponse[]
+  count: number
 }

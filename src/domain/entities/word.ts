@@ -1,14 +1,14 @@
-import { DateRecords } from '../../types';
+import { DateRecords } from '../../types'
 
 interface Entity {
-  id: string;
+  id: string
 
-  word: string;
-  translation: string;
+  word: string
+  translation: string
 
-  note?: string;
+  note?: string
 
-  deleted: boolean;
+  deleted: boolean
 }
 
-export type Word = Entity & DateRecords;
+export type Word = Entity & DateRecords

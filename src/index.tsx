@@ -1,10 +1,10 @@
-import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
-import App from './App';
+import App from './App'
 
-const mainElement = document.getElementById('main');
+const mainElement = document.getElementById('main')
 
 ReactDOM.render(
   <StrictMode>
@@ -13,4 +13,4 @@ ReactDOM.render(
     </BrowserRouter>
   </StrictMode>,
   mainElement
-);
+)

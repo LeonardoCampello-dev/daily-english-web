@@ -1,8 +1,8 @@
-import { Box, Center } from '@chakra-ui/react';
-import { ComponentType } from 'react';
+import { Box, Center } from '@chakra-ui/react'
+import { ComponentType } from 'react'
 
-import { DailyEnglishIcon } from '../../presentational';
-import { WordsTable } from './table/words-table';
+import { DailyEnglishIcon } from '../../presentational'
+import { WordsTable } from './table/words-table'
 
 export const Words: ComponentType = () => {
   return (
@@ -13,5 +13,5 @@ export const Words: ComponentType = () => {
 
       <WordsTable />
     </Box>
-  );
-};
+  )
+}

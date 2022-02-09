@@ -2,7 +2,9 @@ import { Table, Tbody, Text, Spinner, Center, Button } from '@chakra-ui/react';
 
 import { ComponentType } from 'react';
 
+import { Modal } from '../../../presentational';
 import { formatDate } from '../../../../utils/formatters/format-date';
+
 import { TableContainer, TableHeader, TableRow } from './components';
 import { useWordsTable } from './useWordsTable';
 
@@ -43,19 +45,28 @@ export const WordsTable: ComponentType = () => {
         <TableHeader columns={columns} hasActions />
 
         <Tbody>
-          {data?.items.map(({ id, word, translation, createdAt, updatedAt }) => {
+          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note }) => {
             const columns = [
               <Text fontWeight='bold'>{word}</Text>,
               translation,
-              <Button
-                size='xs'
-                backgroundColor='secondary.500'
-                color='white'
-                textAlign='center'
-                _hover={{ transition: '0.2s', filter: 'brightness(0.95)' }}
+
+              <Modal
+                title='Notes'
+                size='sm'
+                onOpenButton={
+                  <Button
+                    size='xs'
+                    backgroundColor='secondary.500'
+                    color='white'
+                    textAlign='center'
+                    _hover={{ transition: '0.2s', filter: 'brightness(0.95)' }}
+                  >
+                    View
+                  </Button>
+                }
               >
-                View
-              </Button>,
+                <Text mb={8}>{note}</Text>
+              </Modal>,
               updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
             ];
 

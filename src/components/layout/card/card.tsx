@@ -27,9 +27,11 @@ export const Card: ComponentType<CardProps> = ({ title, imagePath, redirectPath 
           </Tag>
         </Box>
 
-        <Box>
-          <Image boxSize={16} objectFit='cover' src={imagePath} />
-        </Box>
+        {imagePath && (
+          <Box>
+            <Image boxSize={16} objectFit='cover' src={imagePath} />
+          </Box>
+        )}
       </Flex>
     </Link>
   );

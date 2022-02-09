@@ -32,10 +32,15 @@ export const WordsTable: ComponentType = () => {
     );
   }
 
+  const actions = {
+    edit: () => console.log('edit'),
+    delete: () => console.log('delete')
+  };
+
   return (
     <TableContainer>
       <Table variant='simple' size='sm' p={2} colorScheme='orange'>
-        <TableHeader columns={columns} />
+        <TableHeader columns={columns} hasActions />
 
         <Tbody>
           {data?.items.map(({ id, word, translation, createdAt, updatedAt }) => {
@@ -43,7 +48,7 @@ export const WordsTable: ComponentType = () => {
               <Text fontWeight='bold'>{word}</Text>,
               translation,
               <Button
-                size='sm'
+                size='xs'
                 backgroundColor='secondary.500'
                 color='white'
                 textAlign='center'
@@ -54,7 +59,7 @@ export const WordsTable: ComponentType = () => {
               updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
             ];
 
-            return <TableRow key={id} columns={columns} />;
+            return <TableRow key={id} columns={columns} actions={actions} />;
           })}
         </Tbody>
       </Table>

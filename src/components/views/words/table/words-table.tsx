@@ -7,6 +7,7 @@ import { formatDate } from '../../../../utils/formatters/format-date'
 
 import { TableContainer, TableHeader, TableRow } from './components'
 import { useWordsTable } from './useWordsTable'
+import { EditWord } from '../edit/edit-word'
 
 export const WordsTable: ComponentType = () => {
   const { columns, isError, isFetching, isLoading, data } = useWordsTable()
@@ -37,7 +38,7 @@ export const WordsTable: ComponentType = () => {
   const actions = {
     edit: {
       title: 'Edit note',
-      content: <Text mb={4}>Test</Text>
+      content: <EditWord />
     },
     delete: {
       title: 'Delete note',

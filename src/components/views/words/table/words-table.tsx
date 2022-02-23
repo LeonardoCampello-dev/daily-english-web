@@ -8,6 +8,7 @@ import { formatDate } from '../../../../utils/formatters/format-date'
 import { TableContainer, TableHeader, TableRow } from './components'
 import { useWordsTable } from './useWordsTable'
 import { EditWord } from '../edit/edit-word'
+import { DeleteWord } from '../delete/delete-word'
 
 export const WordsTable: ComponentType = () => {
   const { columns, isError, isFetching, isLoading, data } = useWordsTable()
@@ -42,7 +43,7 @@ export const WordsTable: ComponentType = () => {
     },
     delete: {
       title: 'Delete note',
-      content: <Text mb={4}>Test</Text>
+      content: <DeleteWord />
     }
   }
 

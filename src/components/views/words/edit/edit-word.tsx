@@ -30,10 +30,9 @@ export const EditWord: ComponentType = () => {
         size="sm"
         placeholder="type a note"
         mt={4}
-        mb={4}
       />
 
-      <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end">
+      <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>
         <Button colorScheme="red" size="sm">
           Cancelar
         </Button>

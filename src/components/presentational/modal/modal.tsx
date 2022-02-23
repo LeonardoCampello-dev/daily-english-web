@@ -46,7 +46,7 @@ export const Modal: ComponentType<ModalProps> = ({
   )
 }
 
-type ModalProps = {
+export type ModalProps = {
   title: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | 'full'
   onOpenButton: ReactNode

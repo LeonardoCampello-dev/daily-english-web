@@ -2,7 +2,7 @@ import { Table, Tbody, Text, Spinner, Center } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
-import { NoteModal } from '../note-modal/note-modal'
+import { NoteModal } from '../modals/note-modal/note-modal'
 import { formatDate } from '../../../../utils/formatters/format-date'
 
 import { TableContainer, TableHeader, TableRow } from './components'
@@ -35,8 +35,14 @@ export const WordsTable: ComponentType = () => {
   }
 
   const actions = {
-    edit: () => console.log('edit'),
-    delete: () => console.log('delete')
+    edit: {
+      title: 'Edit note',
+      content: <Text mb={4}>Test</Text>
+    },
+    delete: {
+      title: 'Delete note',
+      content: <Text mb={4}>Test</Text>
+    }
   }
 
   return (
@@ -45,7 +51,7 @@ export const WordsTable: ComponentType = () => {
         <TableHeader columns={columns} hasActions />
 
         <Tbody>
-          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note }, index) => {
+          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note }) => {
             const columns = [
               <Text fontWeight="bold">{word}</Text>,
               translation,

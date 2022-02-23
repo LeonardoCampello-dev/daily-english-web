@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 
-import { Modal } from '../../../presentational'
+import { Modal } from '../../../../presentational'
 import { ComponentType } from 'react'
 
 export const NoteModal: ComponentType = ({ children }) => {

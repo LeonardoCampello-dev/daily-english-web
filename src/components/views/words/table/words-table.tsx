@@ -36,14 +36,16 @@ export const WordsTable: ComponentType = () => {
     )
   }
 
-  const actions = {
-    edit: {
-      title: 'Edit note',
-      content: <EditWord />
-    },
-    delete: {
-      title: 'Delete note',
-      content: <DeleteWord />
+  const makeActions = (id: string) => {
+    return {
+      edit: {
+        title: 'Edit note',
+        content: <EditWord id={id} />
+      },
+      delete: {
+        title: 'Delete note',
+        content: <DeleteWord />
+      }
     }
   }
 
@@ -64,7 +66,7 @@ export const WordsTable: ComponentType = () => {
               updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
             ]
 
-            return <TableRow key={id} columns={columns} actions={actions} />
+            return <TableRow key={id} columns={columns} actions={makeActions(id)} />
           })}
         </Tbody>
       </Table>

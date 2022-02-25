@@ -1,5 +1,5 @@
 import { Word } from '../../../../domain/entities'
-import { WordCreateAndUpdateRequest } from './interfaces/word-create-and-update-request'
+import { WordCreateAndUpdateRequestDTO } from './interfaces/dto/word-create-and-update-request'
 
 import { EndpointEnum } from '../../../../types/enums'
 import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'
@@ -13,9 +13,10 @@ export const useDailyEnglishWordAPI = () => {
     endpoint,
     get: () => get<Word>(),
     getOneById: (id: string) => getOneById<Word>(id),
-    create: (data: WordCreateAndUpdateRequest) => create<WordCreateAndUpdateRequest, Word>(data),
-    update: (id: string, data: WordCreateAndUpdateRequest) =>
-      update<WordCreateAndUpdateRequest, Word>(id, data),
+    create: (data: WordCreateAndUpdateRequestDTO) =>
+      create<WordCreateAndUpdateRequestDTO, Word>(data),
+    update: (id: string, data: WordCreateAndUpdateRequestDTO) =>
+      update<WordCreateAndUpdateRequestDTO, Word>(id, data),
     deleteOneById: (id: string) => deleteOneById<Word>(id)
   }
 }

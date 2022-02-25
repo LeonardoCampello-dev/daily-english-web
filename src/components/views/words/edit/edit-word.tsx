@@ -14,15 +14,24 @@ import {
 import { joiResolver } from '@hookform/resolvers/joi'
 import Joi from 'joi'
 
-import { ComponentType } from 'react'
-import { useForm } from 'react-hook-form'
+import { ComponentType, useEffect } from 'react'
+import { useController, useForm } from 'react-hook-form'
+
+import {
+  useIsSavingWord,
+  useSaveWord
+} from '../../../../services/api/daily-english-api/mutations/useSaveWord'
+
 import { useGetWordById } from '../../../../services/api/daily-english-api/queries/useGetWordById'
-import { WordCreateAndUpdateRequest } from '../../../../services/api/daily-english-api/word/interfaces/word-create-and-update-request'
+import { WordCreateAndUpdateRequestDTO } from '../../../../services/api/daily-english-api/word/interfaces/dto/word-create-and-update-request'
 
 export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
   const { data, isLoading, isFetching } = useGetWordById(id)
 
-  const { register, handleSubmit, formState } = useForm<WordCreateAndUpdateRequest>({
+  const { mutateAsync: saveWord } = useSaveWord(id)
+  const isSaving = useIsSavingWord(id)
+
+  const { handleSubmit, formState, control, setValue } = useForm<WordCreateAndUpdateRequestDTO>({
     resolver: joiResolver(
       Joi.object({
         word: Joi.string()
@@ -33,17 +42,40 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
           .messages({ 'string.empty': 'Required field', 'any.required': 'Required field' }),
         note: Joi.string().allow('', null)
       })
-    ),
-    defaultValues: {
-      word: data?.word || '',
-      translation: data?.translation || '',
-      note: data?.note || ''
-    }
+    )
   })
 
-  const onSubmit = (data: object) => console.log(data)
+  const word = useController<WordCreateAndUpdateRequestDTO, 'word'>({
+    name: 'word',
+    control,
+    defaultValue: ''
+  })
 
-  if (isLoading || isFetching) {
+  const translation = useController<WordCreateAndUpdateRequestDTO, 'translation'>({
+    name: 'translation',
+    control,
+    defaultValue: ''
+  })
+
+  const note = useController<WordCreateAndUpdateRequestDTO, 'note'>({
+    name: 'note',
+    control,
+    defaultValue: ''
+  })
+
+  const onSubmit = (data: WordCreateAndUpdateRequestDTO) => {
+    saveWord(data)
+  }
+
+  useEffect(() => {
+    if (data) {
+      setValue('word', data.word)
+      setValue('translation', data.translation)
+      setValue('note', data.note)
+    }
+  }, [data, setValue])
+
+  if (isLoading || isFetching || isSaving) {
     return (
       <Stack px={4} py={4}>
         <Skeleton height="36px" />
@@ -60,8 +92,8 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
           <FormLabel htmlFor="word">Word</FormLabel>
 
           <Input
-            {...register('word')}
             id="word"
+            {...word.field}
             height="36px"
             borderRadius={4}
             focusBorderColor="primary.500"
@@ -77,8 +109,8 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
           <FormLabel htmlFor="translation">Translation</FormLabel>
 
           <Input
-            {...register('translation')}
             id="translation"
+            {...translation.field}
             height="36px"
             borderRadius={4}
             focusBorderColor="primary.500"
@@ -94,8 +126,8 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
           <FormLabel htmlFor="note">Note</FormLabel>
 
           <Textarea
-            {...register('note')}
             id="note"
+            {...note.field}
             height="72px"
             resize="none"
             borderRadius={4}
@@ -111,7 +143,7 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
             Cancelar
           </Button>
 
-          <Button colorScheme="green" size="sm" type="submit">
+          <Button colorScheme="green" size="sm" type="submit" isLoading={isSaving}>
             Salvar
           </Button>
         </ButtonGroup>

@@ -23,7 +23,7 @@ export const useDailyEnglishAPI = (endpoint: Endpoint) => {
 
   const update = useCallback(
     async <Data, Response, Identifier = string>(identifier: Identifier, data: Data) =>
-      (await api.patch<Response>(`/${endpoint}/${identifier}`, data)).data,
+      (await api.put<Response>(`/${endpoint}/${identifier}`, data)).data,
     [endpoint]
   )
 

@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   ButtonGroup,
   FormControl,
   FormLabel,
@@ -10,9 +9,10 @@ import {
 } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
+import { BaseButton, BaseButtonColorsEnum } from '../../../buttons'
 
 import { BaseInput } from '../../../inputs'
-import { BaseTextarea } from '../../../inputs/textareas'
+import { BaseTextarea } from '../../../textareas'
 
 import { useEditWord } from './useEditWord'
 
@@ -60,13 +60,11 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
         </FormControl>
 
         <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>
-          <Button colorScheme="red" size="sm">
-            Cancelar
-          </Button>
+          <BaseButton color={BaseButtonColorsEnum.ERROR}>Cancelar</BaseButton>
 
-          <Button colorScheme="green" size="sm" type="submit" isLoading={isSaving}>
+          <BaseButton color={BaseButtonColorsEnum.SUCCESS} type="submit" isLoading={isSaving}>
             Salvar
-          </Button>
+          </BaseButton>
         </ButtonGroup>
       </Box>
     </form>

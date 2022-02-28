@@ -9,18 +9,26 @@ import {
 
 import { ReactChildren } from 'react'
 
-export const BaseFormControl = ({ ...props }: BaseFormControlProps) => {
+export const BaseFormControl = ({
+  labelHtmlFor,
+  label,
+  errorMessage,
+  formLabelProps,
+  formErrorMessageProps,
+  field,
+  ...props
+}: BaseFormControlProps) => {
   return (
     <FormControl {...props} isInvalid={props.isInvalid}>
-      {props.label && (
-        <FormLabel {...props.formLabelProps} htmlFor={props.labelHtmlFor}>
-          {props.label}
+      {label && (
+        <FormLabel {...formLabelProps} htmlFor={labelHtmlFor}>
+          {label}
         </FormLabel>
       )}
 
-      {props.field}
+      {field}
 
-      <FormErrorMessage {...props.formErrorMessageProps}>{props.errorMessage}</FormErrorMessage>
+      <FormErrorMessage {...formErrorMessageProps}>{errorMessage}</FormErrorMessage>
     </FormControl>
   )
 }

@@ -1,13 +1,18 @@
+import { useToast } from '@chakra-ui/react'
+
 import { useCallback, useMemo } from 'react'
 import { useIsMutating, useMutation, UseMutationResult, useQueryClient } from 'react-query'
 
 import { Word } from '../../../../domain/entities'
+import { toastDefaultOptions } from '../../../../utils/toast/toast-default-options'
 import { WordCreateAndUpdateRequestDTO } from '../word/interfaces/dto/word-create-and-update-request'
 import { useDailyEnglishWordAPI } from '../word/useDailyEnglishWordAPI'
 
 export const useSaveWord = (
   id: string
 ): UseMutationResult<Word, unknown, WordCreateAndUpdateRequestDTO, Word> => {
+  const toast = useToast()
+
   const { endpoint, create, update } = useDailyEnglishWordAPI()
 
   const queryClient = useQueryClient()
@@ -30,10 +35,20 @@ export const useSaveWord = (
     mutationFn,
     {
       onError: () => {
-        console.log('error')
+        toast({
+          description: 'There was an error while performing the update 🙁',
+          status: 'error',
+          ...toastDefaultOptions
+        })
       },
       onSuccess: data => {
         if (id) {
+          toast({
+            description: 'Translation updated successfully 😎',
+            status: 'success',
+            ...toastDefaultOptions
+          })
+
           queryClient.setQueryData(mutationKey, data)
 
           return

@@ -6,8 +6,8 @@ import { DeleteModal, EditModal } from './actions/modals'
 export const TableRow: ComponentType<TableRowProps> = ({ columns, actions }) => {
   return (
     <Tr>
-      {columns.map(column => (
-        <Td px={2} textAlign="center">
+      {columns.map((column, index) => (
+        <Td key={index} px={2} textAlign="center">
           {column}
         </Td>
       ))}

@@ -1,7 +1,5 @@
 import {
   Box,
-  Input,
-  Textarea,
   Button,
   ButtonGroup,
   FormControl,
@@ -12,6 +10,9 @@ import {
 } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
+
+import { BaseInput } from '../../../inputs'
+import { BaseTextarea } from '../../../inputs/textareas'
 
 import { useEditWord } from './useEditWord'
 
@@ -35,16 +36,7 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
         <FormControl isInvalid={Boolean(formState.errors.word?.message)}>
           <FormLabel htmlFor="word">Word</FormLabel>
 
-          <Input
-            id="word"
-            {...controllers.word.field}
-            height="36px"
-            borderRadius={4}
-            focusBorderColor="primary.500"
-            variant="outline"
-            size="sm"
-            placeholder="type the word"
-          />
+          <BaseInput id="word" controller={controllers.word} placeholder="type the word" />
 
           <FormErrorMessage>{formState.errors.word?.message}</FormErrorMessage>
         </FormControl>
@@ -52,14 +44,9 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
         <FormControl mt={4} isInvalid={Boolean(formState.errors.translation?.message)}>
           <FormLabel htmlFor="translation">Translation</FormLabel>
 
-          <Input
+          <BaseInput
             id="translation"
-            {...controllers.translation.field}
-            height="36px"
-            borderRadius={4}
-            focusBorderColor="primary.500"
-            variant="outline"
-            size="sm"
+            controller={controllers.translation}
             placeholder="type the translation"
           />
 
@@ -69,17 +56,7 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
         <FormControl mt={4}>
           <FormLabel htmlFor="note">Note</FormLabel>
 
-          <Textarea
-            id="note"
-            {...controllers.note.field}
-            height="72px"
-            resize="none"
-            borderRadius={4}
-            focusBorderColor="primary.500"
-            variant="outline"
-            size="sm"
-            placeholder="type a note"
-          />
+          <BaseTextarea id="note" controller={controllers.note} placeholder="type a note" />
         </FormControl>
 
         <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>

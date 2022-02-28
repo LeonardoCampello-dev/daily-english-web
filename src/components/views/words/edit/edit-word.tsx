@@ -1,18 +1,12 @@
-import {
-  Box,
-  ButtonGroup,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Skeleton,
-  Stack
-} from '@chakra-ui/react'
+import { Box, ButtonGroup } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 import { BaseButton, BaseButtonColorsEnum } from '../../../buttons'
+import { BaseFormControl } from '../../../forms'
 
 import { BaseInput } from '../../../inputs'
 import { BaseTextarea } from '../../../textareas'
+import { EditWordFormSkeleton } from './components/form-skeleton'
 
 import { useEditWord } from './useEditWord'
 
@@ -21,48 +15,46 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
     useEditWord({ id })
 
   if (isLoading || isFetching || isSaving) {
-    return (
-      <Stack px={4} py={4}>
-        <Skeleton height="36px" />
-        <Skeleton height="36px" mt={4} />
-        <Skeleton height="72px" mt={4} />
-      </Stack>
-    )
+    return <EditWordFormSkeleton />
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box px={4} py={4}>
-        <FormControl isInvalid={Boolean(formState.errors.word?.message)}>
-          <FormLabel htmlFor="word">Word</FormLabel>
+        <BaseFormControl
+          isInvalid={Boolean(formState.errors.translation?.message)}
+          label={'Word'}
+          labelHtmlFor={'word'}
+          errorMessage={formState.errors.word?.message}
+          field={<BaseInput id="word" controller={controllers.word} placeholder="type the word" />}
+        />
 
-          <BaseInput id="word" controller={controllers.word} placeholder="type the word" />
+        <BaseFormControl
+          mt={4}
+          isInvalid={Boolean(formState.errors.translation?.message)}
+          label={'Translation'}
+          labelHtmlFor={'translation'}
+          errorMessage={formState.errors.translation?.message}
+          field={
+            <BaseInput
+              id="translation"
+              controller={controllers.translation}
+              placeholder="type the translation"
+            />
+          }
+        />
 
-          <FormErrorMessage>{formState.errors.word?.message}</FormErrorMessage>
-        </FormControl>
-
-        <FormControl mt={4} isInvalid={Boolean(formState.errors.translation?.message)}>
-          <FormLabel htmlFor="translation">Translation</FormLabel>
-
-          <BaseInput
-            id="translation"
-            controller={controllers.translation}
-            placeholder="type the translation"
-          />
-
-          <FormErrorMessage>{formState.errors.translation?.message}</FormErrorMessage>
-        </FormControl>
-
-        <FormControl mt={4}>
-          <FormLabel htmlFor="note">Note</FormLabel>
-
-          <BaseTextarea id="note" controller={controllers.note} placeholder="type a note" />
-        </FormControl>
+        <BaseFormControl
+          mt={4}
+          label={'Note'}
+          labelHtmlFor={'note'}
+          field={<BaseTextarea id="note" controller={controllers.note} placeholder="type a note" />}
+        />
 
         <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>
-          <BaseButton color={BaseButtonColorsEnum.ERROR}>Cancelar</BaseButton>
+          <BaseButton colorScheme={BaseButtonColorsEnum.ERROR}>Cancelar</BaseButton>
 
-          <BaseButton color={BaseButtonColorsEnum.SUCCESS} type="submit" isLoading={isSaving}>
+          <BaseButton colorScheme={BaseButtonColorsEnum.SUCCESS} type="submit" isLoading={isSaving}>
             Salvar
           </BaseButton>
         </ButtonGroup>

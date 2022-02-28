@@ -8,12 +8,12 @@ export enum BaseButtonColorsEnum {
 
 export const BaseButton: ComponentType<BaseButtonProps> = ({ children, ...props }) => {
   return (
-    <Button {...props} colorScheme={props.color} size={props.size || 'sm'}>
+    <Button {...props} colorScheme={props.colorScheme} size={props.size || 'sm'}>
       {children}
     </Button>
   )
 }
 
 type BaseButtonProps = {
-  color?: BaseButtonColorsEnum
+  colorScheme?: BaseButtonColorsEnum
 } & Omit<ButtonProps, 'colorScheme'>

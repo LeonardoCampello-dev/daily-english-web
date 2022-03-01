@@ -68,18 +68,21 @@ export const WordsTable: ComponentType = () => {
         <TableHeader columns={columns} hasActions />
 
         <Tbody>
-          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note }) => {
-            const columns = [
-              <Text fontWeight="bold">{word}</Text>,
-              translation,
+          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note, deleted }) => {
+            if (!deleted) {
+              const columns = [
+                <Text fontWeight="bold">{word}</Text>,
+                translation,
+                <NoteModal hasNote={Boolean(note)}>
+                  <Text mb={8}>{note}</Text>
+                </NoteModal>,
+                updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
+              ]
 
-              <NoteModal>
-                <Text mb={8}>{note}</Text>
-              </NoteModal>,
-              updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
-            ]
+              return <TableRow key={id} columns={columns} actions={makeActions(id)} />
+            }
 
-            return <TableRow key={id} columns={columns} actions={makeActions(id)} />
+            return null
           })}
         </Tbody>
       </Table>

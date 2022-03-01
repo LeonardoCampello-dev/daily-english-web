@@ -41,12 +41,12 @@ export const WordsTable: ComponentType = () => {
   const makeActions = (id: string) => {
     return {
       edit: {
-        title: 'Edit note',
+        title: 'Edit word',
         content: <EditWord id={id} />
       },
       delete: {
-        title: 'Delete note',
-        content: <DeleteWord />
+        title: 'Delete word',
+        content: <DeleteWord id={id} />
       }
     }
   }

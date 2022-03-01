@@ -1,8 +1,13 @@
-import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react'
+import { Box, ButtonGroup, Text } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
-export const DeleteWord: ComponentType = () => {
+import { BaseButton, BaseButtonColorsEnum } from '../../../buttons'
+import { useDeleteWordModal } from './useDeleteWord'
+
+export const DeleteWord: ComponentType<DeleteWordProps> = ({ id }) => {
+  const { isDeleting, deleteWord } = useDeleteWordModal()
+
   return (
     <Box px={4} py={4}>
       <Text>Do you really want to delete this item?</Text>
@@ -10,14 +15,20 @@ export const DeleteWord: ComponentType = () => {
       <Text>This action will be irreversible.</Text>
 
       <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>
-        <Button size="sm" colorScheme="gray">
-          Cancel
-        </Button>
+        <BaseButton>Cancel</BaseButton>
 
-        <Button size="sm" colorScheme="red">
+        <BaseButton
+          colorScheme={BaseButtonColorsEnum.ERROR}
+          isLoading={isDeleting}
+          onClick={() => deleteWord(id)}
+        >
           Confirm
-        </Button>
+        </BaseButton>
       </ButtonGroup>
     </Box>
   )
+}
+
+type DeleteWordProps = {
+  id: string
 }

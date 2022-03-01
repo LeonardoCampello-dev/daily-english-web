@@ -4,7 +4,7 @@ import { useQuery, UseQueryResult } from 'react-query'
 import { Word } from '../../../../domain/entities'
 import { useDailyEnglishWordAPI } from '../word/useDailyEnglishWordAPI'
 
-export const useGetWordById = (id: string): UseQueryResult<Word> => {
+export const useGetWordById = (id = ''): UseQueryResult<Word> => {
   const { endpoint, getOneById } = useDailyEnglishWordAPI()
 
   const queryKey = useMemo(() => [endpoint, id], [endpoint, id])

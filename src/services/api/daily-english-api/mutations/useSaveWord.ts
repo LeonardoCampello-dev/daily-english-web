@@ -9,7 +9,7 @@ import { WordCreateAndUpdateRequestDTO } from '../word/interfaces/dto/word-creat
 import { useDailyEnglishWordAPI } from '../word/useDailyEnglishWordAPI'
 
 export const useSaveWord = (
-  id: string
+  id = ''
 ): UseMutationResult<Word, unknown, WordCreateAndUpdateRequestDTO, Word> => {
   const toast = useToast()
 
@@ -41,7 +41,9 @@ export const useSaveWord = (
           ...toastDefaultOptions
         })
       },
-      onSuccess: data => {
+      onSuccess: () => {
+        queryClient.invalidateQueries()
+
         if (id) {
           toast({
             description: 'Translation updated successfully 😎',
@@ -49,10 +51,14 @@ export const useSaveWord = (
             ...toastDefaultOptions
           })
 
-          queryClient.setQueryData(mutationKey, data)
-
           return
         }
+
+        toast({
+          description: 'Translation created successfully 🥳',
+          status: 'success',
+          ...toastDefaultOptions
+        })
       }
     }
   )
@@ -60,7 +66,7 @@ export const useSaveWord = (
   return mutation
 }
 
-export const useIsSavingWord = (id: string): boolean => {
+export const useIsSavingWord = (id = ''): boolean => {
   const { endpoint } = useDailyEnglishWordAPI()
 
   const mutationKey = useMemo<string[]>(() => [endpoint, id], [endpoint, id])

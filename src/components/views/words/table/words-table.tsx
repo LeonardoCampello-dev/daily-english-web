@@ -1,14 +1,16 @@
+import { AddIcon } from '@chakra-ui/icons'
 import { Table, Tbody, Text, Spinner, Center } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
+import { TableContainer, TableHeader, TableRow } from './components'
+import { EditModal } from './components/table-row/actions/modals'
+import { BaseButton } from '../../../buttons'
+import { DeleteWord } from '../delete/delete-word'
+import { EditWord } from '../edit/edit-word'
 import { NoteModal } from '../modals/note-modal/note-modal'
 import { formatDate } from '../../../../utils/formatters/format-date'
-
-import { TableContainer, TableHeader, TableRow } from './components'
 import { useWordsTable } from './useWordsTable'
-import { EditWord } from '../edit/edit-word'
-import { DeleteWord } from '../delete/delete-word'
 
 export const WordsTable: ComponentType = () => {
   const { columns, isError, isFetching, isLoading, data } = useWordsTable()
@@ -51,6 +53,17 @@ export const WordsTable: ComponentType = () => {
 
   return (
     <TableContainer>
+      <EditModal
+        title="Add new word"
+        onOpenButton={
+          <BaseButton backgroundColor="primary.500" color="white" mb={2} leftIcon={<AddIcon />}>
+            Add new word
+          </BaseButton>
+        }
+      >
+        <EditWord />
+      </EditModal>
+
       <Table variant="simple" size="sm" p={2} colorScheme="orange">
         <TableHeader columns={columns} hasActions />
 

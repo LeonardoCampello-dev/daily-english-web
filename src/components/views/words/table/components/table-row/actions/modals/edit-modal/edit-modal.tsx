@@ -5,10 +5,14 @@ import { ComponentType } from 'react'
 
 export const EditModal: ComponentType<EditModalProps> = ({ children, ...props }) => {
   return (
-    <Modal title={props.title || 'Edit'} size={props.size || 'sm'} onOpenButton={<EditIcon />}>
+    <Modal
+      title={props.title || 'Edit'}
+      size={props.size || 'sm'}
+      onOpenButton={props.onOpenButton ? props.onOpenButton : <EditIcon />}
+    >
       {children}
     </Modal>
   )
 }
 
-type EditModalProps = Partial<Omit<ModalProps, 'onOpenButton'>>
+type EditModalProps = Partial<ModalProps>

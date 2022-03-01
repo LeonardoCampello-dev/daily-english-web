@@ -52,10 +52,10 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
         />
 
         <ButtonGroup display="flex" alignItems="center" justifyContent="flex-end" mt={4}>
-          <BaseButton colorScheme={BaseButtonColorsEnum.ERROR}>Cancelar</BaseButton>
+          <BaseButton colorScheme={BaseButtonColorsEnum.ERROR}>Cancel</BaseButton>
 
           <BaseButton colorScheme={BaseButtonColorsEnum.SUCCESS} type="submit" isLoading={isSaving}>
-            Salvar
+            {id ? 'Save' : 'Create'}
           </BaseButton>
         </ButtonGroup>
       </Box>
@@ -64,5 +64,5 @@ export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
 }
 
 type EditWordProps = {
-  id: string
+  id?: string
 }

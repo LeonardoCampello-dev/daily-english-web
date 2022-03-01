@@ -46,5 +46,5 @@ export const useEditWord = ({ id }: useEditWordProps) => {
 }
 
 type useEditWordProps = {
-  id: string
+  id?: string
 }

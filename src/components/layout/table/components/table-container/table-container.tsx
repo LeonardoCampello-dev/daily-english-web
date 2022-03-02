@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+
 import { ComponentType } from 'react'
 
 export const TableContainer: ComponentType = ({ children }) => {

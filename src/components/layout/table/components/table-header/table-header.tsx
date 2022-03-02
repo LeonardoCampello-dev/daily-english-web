@@ -1,5 +1,6 @@
 import { Th, Thead, Tr } from '@chakra-ui/react'
-import { ComponentType } from 'react'
+
+import { ComponentType, ReactNode } from 'react'
 
 export const TableHeader: ComponentType<TableHeaderProps> = ({ columns, hasActions = false }) => {
   return (
@@ -17,7 +18,7 @@ export const TableHeader: ComponentType<TableHeaderProps> = ({ columns, hasActio
   )
 }
 
-type TableHeaderProps = {
-  columns: (string | JSX.Element)[]
+export type TableHeaderProps = {
+  columns: (string | JSX.Element | ReactNode)[]
   hasActions: boolean
 }

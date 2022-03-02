@@ -1,7 +1,7 @@
 import { EditIcon } from '@chakra-ui/icons'
 
-import { Modal, ModalProps } from '../../../../../../../../presentational'
 import { ComponentType } from 'react'
+import { Modal, ModalProps } from '../../../../../../../presentational'
 
 export const EditModal: ComponentType<EditModalProps> = ({ children, ...props }) => {
   return (

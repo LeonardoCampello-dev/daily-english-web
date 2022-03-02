@@ -1,19 +1,16 @@
+import { Text, Spinner, Center } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import { Table, Tbody, Text, Spinner, Center } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
-import { TableContainer, TableHeader, TableRow } from './components'
-import { EditModal } from './components/table-row/actions/modals'
 import { BaseButton } from '../../../buttons'
-import { DeleteWord } from '../delete/delete-word'
 import { EditWord } from '../edit/edit-word'
-import { NoteModal } from '../modals/note-modal/note-modal'
-import { formatDate } from '../../../../utils/formatters/format-date'
+import { Table } from '../../../layout/table/table'
+import { EditModal } from '../../../layout/table/components/table-row/actions/modals'
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {
-  const { columns, isError, isFetching, isLoading, data } = useWordsTable()
+  const { columns, isError, isFetching, isLoading, rows } = useWordsTable()
 
   if (isError) {
     return (
@@ -38,54 +35,23 @@ export const WordsTable: ComponentType = () => {
     )
   }
 
-  const makeActions = (id: string) => {
-    return {
-      edit: {
-        title: 'Edit word',
-        content: <EditWord id={id} />
-      },
-      delete: {
-        title: 'Delete word',
-        content: <DeleteWord id={id} />
-      }
-    }
-  }
-
   return (
-    <TableContainer>
-      <EditModal
-        title="Add new word"
-        onOpenButton={
-          <BaseButton backgroundColor="primary.500" color="white" mb={2} leftIcon={<AddIcon />}>
-            Add new word
-          </BaseButton>
-        }
-      >
-        <EditWord />
-      </EditModal>
-
-      <Table variant="simple" size="sm" p={2} colorScheme="orange">
-        <TableHeader columns={columns} hasActions />
-
-        <Tbody>
-          {data?.items.map(({ id, word, translation, createdAt, updatedAt, note, deleted }) => {
-            if (!deleted) {
-              const columns = [
-                <Text fontWeight="bold">{word}</Text>,
-                translation,
-                <NoteModal hasNote={Boolean(note)}>
-                  <Text mb={8}>{note}</Text>
-                </NoteModal>,
-                updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
-              ]
-
-              return <TableRow key={id} columns={columns} actions={makeActions(id)} />
-            }
-
-            return null
-          })}
-        </Tbody>
-      </Table>
-    </TableContainer>
+    <Table
+      columns={columns}
+      rows={rows}
+      hasActions
+      componentBeforeTable={
+        <EditModal
+          title="Add new word"
+          onOpenButton={
+            <BaseButton backgroundColor="primary.500" color="white" mb={2} leftIcon={<AddIcon />}>
+              Add new word
+            </BaseButton>
+          }
+        >
+          <EditWord />
+        </EditModal>
+      }
+    />
   )
 }

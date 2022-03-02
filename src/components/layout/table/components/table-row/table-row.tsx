@@ -1,6 +1,7 @@
 import { Tr, Td } from '@chakra-ui/react'
 
 import { ComponentType, ReactNode } from 'react'
+
 import { DeleteModal, EditModal } from './actions/modals'
 
 export const TableRow: ComponentType<TableRowProps> = ({ columns, actions }) => {
@@ -14,10 +15,11 @@ export const TableRow: ComponentType<TableRowProps> = ({ columns, actions }) => 
 
       <Td px={2} textAlign="center">
         {actions?.edit?.content && (
-          <EditModal title={actions.edit.title || undefined}>{actions?.edit.content}</EditModal>
+          <EditModal title={actions.edit.title}>{actions?.edit.content}</EditModal>
         )}
+
         {actions?.delete?.content && (
-          <DeleteModal title={actions.delete.title || undefined} hasEditIcon>
+          <DeleteModal title={actions.delete.title} hasEditIcon>
             {actions?.delete.content}
           </DeleteModal>
         )}
@@ -26,7 +28,7 @@ export const TableRow: ComponentType<TableRowProps> = ({ columns, actions }) => 
   )
 }
 
-type TableRowProps = {
+export type TableRowProps = {
   columns: (string | JSX.Element | ReactNode)[]
   actions?: {
     delete?: TableRowAction

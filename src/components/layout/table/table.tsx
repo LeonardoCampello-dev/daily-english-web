@@ -2,18 +2,18 @@ import { Tbody, Table as ChakraTable } from '@chakra-ui/react'
 
 import { ComponentType, ReactNode } from 'react'
 
-import { TableContainer, TableHeader, TableRow, TableRowProps } from './components'
+import { TableContainer, TableHeader, TableRow, TableRowProps, TableTotalItems } from './components'
 
 export const Table: ComponentType<TableProps> = ({
   columns,
   rows,
+  rowsCount = 0,
   hasActions,
   componentBeforeTable = null
 }) => {
   return (
     <TableContainer>
       {componentBeforeTable}
-
       <ChakraTable>
         <TableHeader columns={columns} hasActions={Boolean(hasActions)} />
 
@@ -23,6 +23,8 @@ export const Table: ComponentType<TableProps> = ({
           })}
         </Tbody>
       </ChakraTable>
+
+      <TableTotalItems count={rowsCount} />
     </TableContainer>
   )
 }
@@ -32,4 +34,5 @@ type TableProps = {
   rows: TableRowProps[]
   hasActions?: boolean
   componentBeforeTable?: JSX.Element | ReactNode
+  rowsCount?: number
 }

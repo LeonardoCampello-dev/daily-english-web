@@ -14,7 +14,6 @@ export const NoteModal: ComponentType<NoteModalProps> = ({ children, hasNote }) 
           backgroundColor="secondary.500"
           color="white"
           textAlign="center"
-          _hover={{ transition: '0.2s', filter: 'brightness(0.95)' }}
           disabled={hasNote ? false : true}
         >
           {hasNote ? 'View' : 'No note'}

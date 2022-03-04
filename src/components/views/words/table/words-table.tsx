@@ -10,7 +10,7 @@ import { EditModal } from '../../../layout/table/components/table-row/actions/mo
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {
-  const { columns, isError, isFetching, isLoading, rows } = useWordsTable()
+  const { columns, data, isError, isFetching, isLoading, rows } = useWordsTable()
 
   if (isError) {
     return (
@@ -39,6 +39,7 @@ export const WordsTable: ComponentType = () => {
     <Table
       columns={columns}
       rows={rows}
+      rowsCount={data?.items.length}
       hasActions
       componentBeforeTable={
         <EditModal

@@ -4,6 +4,7 @@ import { useCallback, useMemo } from 'react'
 import { useIsMutating, useMutation, UseMutationResult, useQueryClient } from 'react-query'
 
 import { Word } from '../../../../domain/entities'
+import { GetAllRequestResponse } from '../interfaces/get-all-request-response'
 import { toastDefaultOptions } from '../../../../utils/toast/toast-default-options'
 import { WordCreateAndUpdateRequestDTO } from '../word/interfaces/dto/word-create-and-update-request'
 import { useDailyEnglishWordAPI } from '../word/useDailyEnglishWordAPI'
@@ -41,10 +42,23 @@ export const useSaveWord = (
           ...toastDefaultOptions
         })
       },
-      onSuccess: () => {
-        queryClient.invalidateQueries()
+      onSuccess: data => {
+        const previousWordList = queryClient.getQueryData<GetAllRequestResponse<Word>>('words')
+
+        queryClient.setQueryData(mutationKey, data)
 
         if (id) {
+          if (previousWordList) {
+            const changedItemIndex = previousWordList.items.findIndex(item => item.id === data.id)
+
+            previousWordList.items[changedItemIndex] = data
+
+            queryClient.setQueryData<GetAllRequestResponse<Word>>('words', {
+              items: [...previousWordList.items],
+              count: previousWordList.items.length
+            })
+          }
+
           toast({
             description: 'Translation updated successfully 😎',
             status: 'success',
@@ -52,6 +66,15 @@ export const useSaveWord = (
           })
 
           return
+        }
+
+        if (previousWordList) {
+          previousWordList.items.push(data)
+
+          queryClient.setQueryData<GetAllRequestResponse<Word>>('words', {
+            items: [...previousWordList.items],
+            count: previousWordList.items.length
+          })
         }
 
         toast({

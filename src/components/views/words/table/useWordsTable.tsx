@@ -28,20 +28,22 @@ export const useWordsTable = () => {
 
   const rows: TableRowProps[] = []
 
-  data?.items.forEach(({ id, word, translation, createdAt, updatedAt, note, deleted }) => {
-    if (!deleted) {
-      const columns = [
-        <Text fontWeight="bold">{word}</Text>,
-        translation,
-        <NoteModal hasNote={Boolean(note)}>
-          <Text mb={8}>{note}</Text>
-        </NoteModal>,
-        updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
-      ]
+  if (data?.items) {
+    data.items.forEach(({ id, word, translation, createdAt, updatedAt, note, deleted }) => {
+      if (!deleted) {
+        const columns = [
+          <Text fontWeight="bold">{word}</Text>,
+          translation,
+          <NoteModal hasNote={Boolean(note)}>
+            <Text mb={8}>{note}</Text>
+          </NoteModal>,
+          updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
+        ]
 
-      rows.push({ columns, actions: makeActions(id) })
-    }
-  })
+        rows.push({ columns, actions: makeActions(id) })
+      }
+    })
+  }
 
   return {
     columns,

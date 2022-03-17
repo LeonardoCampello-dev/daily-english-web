@@ -1,11 +1,11 @@
-import { BaseButton } from '../../../../buttons'
-import { Modal } from '../../../../presentational'
+import { BaseButton } from '../../../buttons'
+import { BaseModal } from '../..'
 
 import { ComponentType } from 'react'
 
 export const NoteModal: ComponentType<NoteModalProps> = ({ children, hasNote }) => {
   return (
-    <Modal
+    <BaseModal
       title="Notes"
       size="sm"
       onOpenButton={
@@ -21,7 +21,7 @@ export const NoteModal: ComponentType<NoteModalProps> = ({ children, hasNote }) 
       }
     >
       {children}
-    </Modal>
+    </BaseModal>
   )
 }
 

@@ -1,31 +1,29 @@
 import { Text } from '@chakra-ui/react'
 import { useCallback, useMemo } from 'react'
 
-import { DeleteWord } from '../delete/delete-word'
-import { EditWord } from '../edit/edit-word'
 import { TableRowProps } from '../../../layout/table/components'
 import { NoteModal } from '../../../presentational/modals'
-import { useGetWords } from '../../../../services/api/daily-english-api/queries/useGetWords'
+import { useGetPhrases } from '../../../../services/api/daily-english-api/queries/useGetPhrases'
 import { formatDate } from '../../../../utils/formatters/format-date'
 
-export const useWordsTable = () => {
-  const columns = useMemo(() => ['Word', 'Translation', 'Note', 'Last update'], [])
+export const usePhrasesTable = () => {
+  const columns = useMemo(() => ['Phrase', 'Translation', 'Note', 'Last update'], [])
 
-  const { data, isLoading, isFetching, isError } = useGetWords()
+  const { data, isLoading, isFetching, isError } = useGetPhrases()
 
   const handleReloadPage = useCallback(() => {
     window.location.reload()
   }, [])
 
-  const makeActions = useCallback((id: string) => {
+  const makeActions = useCallback(() => {
     return {
       edit: {
         title: 'Edit word',
-        content: <EditWord id={id} />
+        content: <Text>Edit Word</Text>
       },
       delete: {
         title: 'Delete word',
-        content: <DeleteWord id={id} />
+        content: <Text>Delete Word</Text>
       }
     }
   }, [])
@@ -33,10 +31,10 @@ export const useWordsTable = () => {
   const rows: TableRowProps[] = []
 
   if (data?.items) {
-    data.items.forEach(({ id, word, translation, createdAt, updatedAt, note, deleted }) => {
+    data.items.forEach(({ phrase, translation, createdAt, updatedAt, note, deleted }) => {
       if (!deleted) {
         const columns = [
-          <Text fontWeight="bold">{word}</Text>,
+          <Text fontWeight="bold">{phrase}</Text>,
           translation,
           <NoteModal hasNote={Boolean(note)}>
             <Text mb={8}>{note}</Text>
@@ -44,7 +42,7 @@ export const useWordsTable = () => {
           updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
         ]
 
-        rows.push({ columns, actions: makeActions(id) })
+        rows.push({ columns, actions: makeActions() })
       }
     })
   }

@@ -11,7 +11,7 @@ import {
 
 import { cloneElement, ComponentType, Fragment, isValidElement, ReactNode } from 'react'
 
-export const Modal: ComponentType<ModalProps> = ({
+export const BaseModal: ComponentType<BaseModalProps> = ({
   children,
   title,
   size = 'md',
@@ -46,7 +46,7 @@ export const Modal: ComponentType<ModalProps> = ({
   )
 }
 
-export type ModalProps = {
+export type BaseModalProps = {
   title: string
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | 'full'
   onOpenButton: ReactNode

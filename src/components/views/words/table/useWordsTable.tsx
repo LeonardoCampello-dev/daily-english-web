@@ -13,6 +13,10 @@ export const useWordsTable = () => {
 
   const { data, isLoading, isFetching, isError } = useGetWords()
 
+  const handleReloadPage = useCallback(() => {
+    window.location.reload()
+  }, [])
+
   const makeActions = useCallback((id: string) => {
     return {
       edit: {
@@ -47,6 +51,7 @@ export const useWordsTable = () => {
 
   return {
     columns,
+    handleReloadPage,
     isError,
     isFetching,
     isLoading,

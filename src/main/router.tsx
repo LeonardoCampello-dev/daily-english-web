@@ -1,14 +1,15 @@
 import { ComponentType } from 'react'
 
 import { Routes, Route } from 'react-router-dom'
-import { Home } from '../components/views/home/home'
-import { Words } from '../components/views/words/words'
+
+import { Home, Phrases, Words } from '../components/views'
 
 export const Router: ComponentType = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/words" element={<Words />} />
+      <Route path="/phrases" element={<Phrases />} />
     </Routes>
   )
 }

@@ -1,21 +1,32 @@
-import { Text, Spinner, Center } from '@chakra-ui/react'
+import { Spinner, Center, Button } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 
 import { ComponentType } from 'react'
 
 import { BaseButton } from '../../../buttons'
 import { EditWord } from '../edit/edit-word'
+import { Alert } from '../../../feedback/alert/alert'
 import { Table } from '../../../layout/table/table'
 import { EditModal } from '../../../layout/table/components/table-row/actions/modals'
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {
-  const { columns, data, isError, isFetching, isLoading, rows } = useWordsTable()
+  const { columns, handleReloadPage, isError, isFetching, isLoading, data, rows } = useWordsTable()
 
   if (isError) {
     return (
-      <Center mt={8}>
-        <Text color="red.400">Ocorreu algum erro</Text>
+      <Center mt={8} px={4}>
+        <Alert
+          title="There was an error while fetching the data"
+          description={
+            <Button variant="ghost" textDecoration="underline" mt={2} onClick={handleReloadPage}>
+              Click here to reload the page
+            </Button>
+          }
+          status="error"
+          hideCloseButton
+          renderInColumns
+        />
       </Center>
     )
   }

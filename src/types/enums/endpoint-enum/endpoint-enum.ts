@@ -1,7 +1,7 @@
 export enum EndpointEnum {
   ARTICLES = 'articles',
   PODCASTS = 'podcasts',
-  SENTENCES = 'sentences',
+  PHRASES = 'phrases',
   SONGS = 'songs',
   WORDS = 'words'
 }

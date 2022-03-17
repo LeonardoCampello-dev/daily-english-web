@@ -1,10 +1,10 @@
 import { api } from '../config/axios-api'
 
 import { useCallback } from 'react'
-import { Endpoint } from '../types'
 import { GetAllRequestResponse } from './api/daily-english-api/interfaces/get-all-request-response'
+import { EndpointEnum } from '../types/enums'
 
-export const useDailyEnglishAPI = (endpoint: Endpoint) => {
+export const useDailyEnglishAPI = (endpoint: EndpointEnum) => {
   const get = useCallback(
     async <Item>() => (await api.get<GetAllRequestResponse<Item>>(`/${endpoint}`)).data,
     [endpoint]

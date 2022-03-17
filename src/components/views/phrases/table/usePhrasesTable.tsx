@@ -11,10 +11,6 @@ export const usePhrasesTable = () => {
 
   const { data, isLoading, isFetching, isError } = useGetPhrases()
 
-  const handleReloadPage = useCallback(() => {
-    window.location.reload()
-  }, [])
-
   const makeActions = useCallback(() => {
     return {
       edit: {
@@ -49,7 +45,6 @@ export const usePhrasesTable = () => {
 
   return {
     columns,
-    handleReloadPage,
     isError,
     isFetching,
     isLoading,

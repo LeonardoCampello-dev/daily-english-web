@@ -6,12 +6,15 @@ import { ComponentType } from 'react'
 import { BaseButton } from '../../../buttons'
 import { EditWord } from '../edit/edit-word'
 import { Alert } from '../../../feedback/alert/alert'
+import { useReloadPage } from '../../../../hooks/useReloadPage'
 import { Table } from '../../../layout/table/table'
 import { EditModal } from '../../../layout/table/components/table-row/actions/modals'
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {
-  const { columns, handleReloadPage, isError, isFetching, isLoading, data, rows } = useWordsTable()
+  const { columns, isError, isFetching, isLoading, data, rows } = useWordsTable()
+
+  const { handleReloadPage } = useReloadPage()
 
   if (isError) {
     return (

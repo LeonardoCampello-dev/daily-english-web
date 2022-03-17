@@ -3,12 +3,14 @@ import { Spinner, Center, Button } from '@chakra-ui/react'
 import { ComponentType } from 'react'
 
 import { Alert } from '../../../feedback/alert/alert'
+import { useReloadPage } from '../../../../hooks/useReloadPage'
 import { Table } from '../../../layout/table/table'
 import { usePhrasesTable } from './usePhrasesTable'
 
 export const PhrasesTable: ComponentType = () => {
-  const { columns, handleReloadPage, isError, isFetching, isLoading, data, rows } =
-    usePhrasesTable()
+  const { columns, isError, isFetching, isLoading, data, rows } = usePhrasesTable()
+
+  const { handleReloadPage } = useReloadPage()
 
   if (isError) {
     return (

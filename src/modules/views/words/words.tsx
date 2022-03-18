@@ -1,7 +1,7 @@
 import { Box, Center } from '@chakra-ui/react'
 import { ComponentType } from 'react'
 
-import { DailyEnglishIcon } from '../../presentational'
+import { DailyEnglishIcon } from 'modules/presentational'
 import { WordsTable } from './table/words-table'
 
 export const Words: ComponentType = () => {

@@ -1,8 +1,7 @@
-import { Phrase } from '../../../../domain/entities'
-
-import { PhraseCreateAndUpdateRequestDTO } from './interfaces/dto/phrase-create-and-update-request'
-import { EndpointEnum } from '../../../../types/enums'
-import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'
+import { Phrase } from 'domain/entities'
+import { PhraseCreateAndUpdateRequestDTO } from './interfaces'
+import { useDailyEnglishAPI } from 'services/useDailyEnglishAPI'
+import { EndpointEnum } from 'types/enums'
 
 export const useDailyEnglishPhraseAPI = () => {
   const endpoint = EndpointEnum.PHRASES

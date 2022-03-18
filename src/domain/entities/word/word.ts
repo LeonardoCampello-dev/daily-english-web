@@ -1,4 +1,4 @@
-import { DateRecords } from '../../../types'
+import { DateRecords } from 'types'
 
 interface Entity {
   id: string

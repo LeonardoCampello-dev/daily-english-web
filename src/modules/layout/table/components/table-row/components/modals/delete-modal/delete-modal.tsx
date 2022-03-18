@@ -1,7 +1,7 @@
 import { DeleteIcon } from '@chakra-ui/icons'
 
+import { BaseModal } from 'modules/presentational'
 import { ComponentType } from 'react'
-import { BaseModal } from '../../../../../../../presentational'
 import { DeleteModalProps } from './types'
 
 export const DeleteModal: ComponentType<DeleteModalProps> = ({ children, ...props }) => {

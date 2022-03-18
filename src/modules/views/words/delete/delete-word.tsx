@@ -2,8 +2,8 @@ import { Box, ButtonGroup, Text } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
-import { BaseButton } from '../../../buttons'
-import { BaseButtonColorsEnum } from '../../../buttons/base-button/enums'
+import { BaseButton } from 'modules/buttons'
+import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
 import { DeleteWordProps } from './types'
 import { useDeleteWordModal } from './useDeleteWord'
 

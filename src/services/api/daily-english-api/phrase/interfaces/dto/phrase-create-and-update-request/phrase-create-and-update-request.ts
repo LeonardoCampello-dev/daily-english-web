@@ -1,4 +1,4 @@
-import { Tense } from '../../../../../../../types'
+import { Tense } from 'types'
 
 export interface PhraseCreateAndUpdateRequestDTO {
   phrase?: string

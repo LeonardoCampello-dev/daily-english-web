@@ -2,9 +2,9 @@ import { Spinner, Center, Button } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
-import { BaseAlert } from '../../../feedback'
-import { useReloadPage } from '../../../../hooks/useReloadPage/useReloadPage'
-import { Table } from '../../../layout/table/table'
+import { useReloadPage } from 'hooks/useReloadPage'
+import { BaseAlert } from 'modules/feedback'
+import { Table } from 'modules/layout'
 import { usePhrasesTable } from './usePhrasesTable'
 
 export const PhrasesTable: ComponentType = () => {

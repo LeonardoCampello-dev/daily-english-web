@@ -1,4 +1,4 @@
-import { CardProps } from '../../layout/card/types'
+import { CardProps } from 'modules/layout/card/types'
 
 export const useHomeCards = (): CardProps[] => {
   return [

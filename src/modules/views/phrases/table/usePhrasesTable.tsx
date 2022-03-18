@@ -1,10 +1,10 @@
 import { Text } from '@chakra-ui/react'
 import { useCallback, useMemo } from 'react'
 
-import { TableRowProps } from '../../../layout/table/components/table-row/types'
-import { NoteModal } from '../../../presentational/modals'
-import { useGetPhrases } from '../../../../services/api/daily-english-api/queries/useGetPhrases'
-import { formatDate } from '../../../../utils/formatters/format-date/format-date'
+import { TableRowProps } from 'modules/layout/table/components/table-row/types'
+import { NoteModal } from 'modules/presentational'
+import { useGetPhrases } from 'services/api/daily-english-api/queries'
+import { formatDate } from 'utils/formatters'
 
 export const usePhrasesTable = () => {
   const columns = useMemo(() => ['Phrase', 'Translation', 'Note', 'Last update'], [])

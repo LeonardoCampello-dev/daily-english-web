@@ -1,8 +1,8 @@
-import { Word } from '../../../../domain/entities'
-import { WordCreateAndUpdateRequestDTO } from './interfaces/dto/word-create-and-update-request/word-create-and-update-request'
+import { Word } from 'domain/entities'
 
-import { EndpointEnum } from '../../../../types/enums'
-import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'
+import { useDailyEnglishAPI } from 'services/useDailyEnglishAPI'
+import { WordCreateAndUpdateRequestDTO } from 'services/api/daily-english-api/word/interfaces'
+import { EndpointEnum } from 'types/enums'
 
 export const useDailyEnglishWordAPI = () => {
   const endpoint = EndpointEnum.WORDS

@@ -3,12 +3,12 @@ import { AddIcon } from '@chakra-ui/icons'
 
 import { ComponentType } from 'react'
 
-import { BaseButton } from '../../../buttons'
 import { EditWord } from '../edit/edit-word'
-import { BaseAlert } from '../../../feedback'
-import { useReloadPage } from '../../../../hooks/useReloadPage/useReloadPage'
-import { Table } from '../../../layout/table/table'
-import { EditModal } from '../../../layout/table/components/table-row/components/modals'
+import { useReloadPage } from 'hooks/useReloadPage'
+import { BaseAlert } from 'modules/feedback'
+import { BaseButton } from 'modules/buttons'
+import { Table } from 'modules/layout'
+import { EditModal } from 'modules/layout/table/components/table-row/components/modals'
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {

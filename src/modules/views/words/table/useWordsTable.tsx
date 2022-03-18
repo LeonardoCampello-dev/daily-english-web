@@ -3,10 +3,11 @@ import { useCallback, useMemo } from 'react'
 
 import { DeleteWord } from '../delete/delete-word'
 import { EditWord } from '../edit/edit-word'
-import { TableRowProps } from '../../../layout/table/components/table-row/types'
-import { NoteModal } from '../../../presentational/modals'
-import { useGetWords } from '../../../../services/api/daily-english-api/queries/useGetWords'
-import { formatDate } from '../../../../utils/formatters/format-date/format-date'
+
+import { TableRowProps } from 'modules/layout/table/components/table-row/types'
+import { NoteModal } from 'modules/presentational'
+import { useGetWords } from 'services/api/daily-english-api/queries'
+import { formatDate } from 'utils/formatters'
 
 export const useWordsTable = () => {
   const columns = useMemo(() => ['Word', 'Translation', 'Note', 'Last update'], [])

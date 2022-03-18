@@ -1,7 +1,7 @@
 import { ComponentType } from 'react'
 
-import { Card, CardsWrap, HomePageDescription, MainWrap } from '../../layout'
-import { DailyEnglishIcon } from '../../presentational'
+import { Card, CardsWrap, HomePageDescription, MainWrap } from 'modules/layout'
+import { DailyEnglishIcon } from 'modules/presentational'
 import { useHomeCards } from './useHomeCards'
 
 export const Home: ComponentType = () => {

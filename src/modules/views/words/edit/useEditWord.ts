@@ -1,12 +1,8 @@
 import { useCallback, useEffect } from 'react'
 
-import {
-  useIsSavingWord,
-  useSaveWord
-} from '../../../../services/api/daily-english-api/mutations/useSaveWord'
-
-import { useGetWordById } from '../../../../services/api/daily-english-api/queries/useGetWordById'
-import { WordCreateAndUpdateRequestDTO } from '../../../../services/api/daily-english-api/word/interfaces/dto/word-create-and-update-request/word-create-and-update-request'
+import { useIsSavingWord, useSaveWord } from 'services/api/daily-english-api/mutations'
+import { useGetWordById } from 'services/api/daily-english-api/queries'
+import { WordCreateAndUpdateRequestDTO } from 'services/api/daily-english-api/word/interfaces'
 
 import { useEditWordForm } from './useEditWordForm'
 

@@ -3,9 +3,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-import { queryClient } from './config/query-client/query-client'
-import { Router } from './main/router'
-import { theme } from './theme/theme'
+import { queryClient } from 'config/query-client'
+import { Router } from 'main/router'
+import { theme } from 'theme'
 
 function App() {
   return (

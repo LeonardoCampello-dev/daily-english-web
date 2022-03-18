@@ -1,5 +1,5 @@
-import { BaseButton } from '../../../buttons'
-import { BaseModal } from '../..'
+import { BaseButton } from 'modules/buttons'
+import { BaseModal } from 'modules/presentational'
 
 import { ComponentType } from 'react'
 import { NoteModalProps } from './types'

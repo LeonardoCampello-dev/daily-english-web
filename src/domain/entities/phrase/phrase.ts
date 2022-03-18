@@ -1,4 +1,4 @@
-import { DateRecords, Tense } from '../../../types'
+import { DateRecords, Tense } from 'types'
 
 interface Entity {
   id: string

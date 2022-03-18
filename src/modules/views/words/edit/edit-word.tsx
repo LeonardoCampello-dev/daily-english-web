@@ -1,12 +1,13 @@
 import { Box, ButtonGroup } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
-import { BaseButton } from '../../../buttons'
-import { BaseButtonColorsEnum } from '../../../buttons/base-button/enums'
+
 import { EditWordFormSkeleton } from './components'
-import { BaseInput } from '../../../inputs'
-import { BaseFormControl } from '../../../forms'
-import { BaseTextarea } from '../../../textareas'
+import { BaseButton } from 'modules/buttons'
+import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
+import { BaseInput } from 'modules/inputs'
+import { BaseFormControl } from 'modules/forms'
+import { BaseTextarea } from 'modules/textareas'
 import { EditWordProps } from './types'
 import { useEditWord } from './useEditWord'
 

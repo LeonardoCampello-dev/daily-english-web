@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
-import { Word } from '../../../../../domain/entities'
-import { useDailyEnglishWordAPI } from '../../word/useDailyEnglishWordAPI'
+import { Word } from 'domain/entities'
+import { useDailyEnglishWordAPI } from 'services/api/daily-english-api/word/useDailyEnglishWordAPI'
 
 export const useGetWordById = (id = ''): UseQueryResult<Word> => {
   const { endpoint, getOneById } = useDailyEnglishWordAPI()

@@ -3,11 +3,11 @@ import { useToast } from '@chakra-ui/react'
 import { useCallback, useMemo } from 'react'
 import { useIsMutating, useMutation, UseMutationResult, useQueryClient } from 'react-query'
 
-import { Word } from '../../../../../domain/entities'
-import { GetAllRequestResponse } from '../../interfaces'
-import { toastDefaultOptions } from '../../../../../utils/toast/toast-default-options'
-import { WordCreateAndUpdateRequestDTO } from '../../word/interfaces/dto/word-create-and-update-request/word-create-and-update-request'
-import { useDailyEnglishWordAPI } from '../../word/useDailyEnglishWordAPI'
+import { Word } from 'domain/entities'
+import { GetAllRequestResponse } from 'services/api/daily-english-api/interfaces'
+import { WordCreateAndUpdateRequestDTO } from 'services/api/daily-english-api/word/interfaces'
+import { useDailyEnglishWordAPI } from 'services/api/daily-english-api/word/useDailyEnglishWordAPI'
+import { toastDefaultOptions } from 'utils/toast'
 
 export const useSaveWord = (
   id = ''

@@ -1,4 +1,5 @@
 import { Select } from '@chakra-ui/react'
+
 import { ComponentType } from 'react'
 import { BaseSelectProps } from './types'
 

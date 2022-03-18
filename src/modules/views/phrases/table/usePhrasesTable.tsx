@@ -5,21 +5,22 @@ import { TableRowProps } from 'modules/layout/table/components/table-row/types'
 import { NoteModal } from 'modules/presentational'
 import { useGetPhrases } from 'services/api/daily-english-api/queries'
 import { formatDate } from 'utils/formatters'
+import { EditPhrase } from '../edit'
 
 export const usePhrasesTable = () => {
   const columns = useMemo(() => ['Phrase', 'Translation', 'Note', 'Last update'], [])
 
   const { data, isLoading, isFetching, isError } = useGetPhrases()
 
-  const makeActions = useCallback(() => {
+  const makeActions = useCallback((id: string) => {
     return {
       edit: {
-        title: 'Edit word',
-        content: <Text>Edit Word</Text>
+        title: 'Edit phrase',
+        content: <EditPhrase id={id} />
       },
       delete: {
-        title: 'Delete word',
-        content: <Text>Delete Word</Text>
+        title: 'Delete phrase',
+        content: <Text>Delete Phrase</Text>
       }
     }
   }, [])
@@ -27,7 +28,7 @@ export const usePhrasesTable = () => {
   const rows: TableRowProps[] = []
 
   if (data?.items) {
-    data.items.forEach(({ phrase, translation, createdAt, updatedAt, note, deleted }) => {
+    data.items.forEach(({ id, phrase, translation, createdAt, updatedAt, note, deleted }) => {
       if (!deleted) {
         const columns = [
           <Text fontWeight="bold">{phrase}</Text>,
@@ -38,7 +39,7 @@ export const usePhrasesTable = () => {
           updatedAt ? formatDate(updatedAt) : formatDate(createdAt)
         ]
 
-        rows.push({ columns, actions: makeActions() })
+        rows.push({ columns, actions: makeActions(id) })
       }
     })
   }

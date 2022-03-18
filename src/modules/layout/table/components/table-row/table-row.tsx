@@ -1,8 +1,7 @@
 import { Tr, Td } from '@chakra-ui/react'
 
+import { DeleteModal, EditModal } from 'modules/presentational'
 import { ComponentType } from 'react'
-
-import { DeleteModal, EditModal } from './components'
 import { TableRowProps } from './types'
 
 export const TableRow: ComponentType<TableRowProps> = ({ columns, actions }) => {

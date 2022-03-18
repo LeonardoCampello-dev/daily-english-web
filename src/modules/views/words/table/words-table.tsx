@@ -8,7 +8,7 @@ import { useReloadPage } from 'hooks/useReloadPage'
 import { BaseAlert } from 'modules/feedback'
 import { BaseButton } from 'modules/buttons'
 import { Table } from 'modules/layout'
-import { EditModal } from 'modules/layout/table/components/table-row/components/modals'
+import { EditModal } from 'modules/presentational'
 import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {

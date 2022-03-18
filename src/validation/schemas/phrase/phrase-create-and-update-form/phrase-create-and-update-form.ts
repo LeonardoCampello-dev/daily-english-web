@@ -15,6 +15,6 @@ export const phraseCreateAndUpdateFormValidationSchema = joiResolver(
     tense: Joi.string()
       .valid(...Object.values(TenseEnum))
       .allow('', null)
-      .messages({ 'any.invalid': 'Select a valid type of tense' })
+      .messages({ 'any.only': 'Select a valid type of tense' })
   })
 )

@@ -68,6 +68,7 @@ export const EditPhrase: ComponentType<EditPhraseProps> = ({ id }) => {
           isInvalid={Boolean(formState.errors.tense?.message)}
           label={'Verbe tense'}
           labelHtmlFor={'verbe-tense'}
+          errorMessage={formState.errors.tense?.message}
           field={
             <BaseSelect
               id="verbe-tense"

@@ -1,5 +1,5 @@
 import { Word } from '../../../../domain/entities'
-import { WordCreateAndUpdateRequestDTO } from './interfaces/dto/word-create-and-update-request'
+import { WordCreateAndUpdateRequestDTO } from './interfaces/dto/word-create-and-update-request/word-create-and-update-request'
 
 import { EndpointEnum } from '../../../../types/enums'
 import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'

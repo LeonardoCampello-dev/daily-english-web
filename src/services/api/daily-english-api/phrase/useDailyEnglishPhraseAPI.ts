@@ -1,6 +1,6 @@
 import { Phrase } from '../../../../domain/entities'
-import { PhraseCreateAndUpdateRequestDTO } from './interfaces/dto/phrase-create-and-update-request'
 
+import { PhraseCreateAndUpdateRequestDTO } from './interfaces/dto/phrase-create-and-update-request'
 import { EndpointEnum } from '../../../../types/enums'
 import { useDailyEnglishAPI } from '../../../useDailyEnglishAPI'
 

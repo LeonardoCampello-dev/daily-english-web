@@ -1,8 +1,8 @@
 import { ComponentType } from 'react'
 
+import { useHomeCards } from './hooks'
 import { Card, CardsWrap, HomePageDescription, MainWrap } from 'modules/layout'
 import { DailyEnglishIcon } from 'modules/presentational'
-import { useHomeCards } from './useHomeCards'
 
 export const Home: ComponentType = () => {
   const cards = useHomeCards()

@@ -4,7 +4,7 @@ import { useIsSavingWord, useSaveWord } from 'services/api/daily-english-api/mut
 import { useGetWordById } from 'services/api/daily-english-api/queries'
 import { WordCreateAndUpdateRequestDTO } from 'services/api/daily-english-api/word/interfaces'
 
-import { useEditWordForm } from './useEditWordForm'
+import { useEditWordForm } from '..'
 
 export const useEditWord = ({ id }: useEditWordProps) => {
   const { controllers, formState, handleSubmit, setValue } = useEditWordForm()

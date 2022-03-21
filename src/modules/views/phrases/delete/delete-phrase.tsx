@@ -2,10 +2,10 @@ import { Box, ButtonGroup, Text } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
+import { useDeletePhraseModal } from './hooks'
 import { BaseButton } from 'modules/buttons'
 import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
 import { DeletePhraseProps } from './types'
-import { useDeletePhraseModal } from './useDeletePhrase'
 
 export const DeletePhrase: ComponentType<DeletePhraseProps> = ({ id }) => {
   const { isDeleting, deletePhrase } = useDeletePhraseModal()

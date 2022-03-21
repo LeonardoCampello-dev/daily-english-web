@@ -3,13 +3,13 @@ import { Box, ButtonGroup } from '@chakra-ui/react'
 import { ComponentType } from 'react'
 
 import { EditWordFormSkeleton } from './components'
+import { useEditWord } from './hooks'
 import { BaseButton } from 'modules/buttons'
 import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
 import { BaseInput } from 'modules/inputs'
 import { BaseFormControl } from 'modules/forms'
 import { BaseTextarea } from 'modules/textareas'
 import { EditWordProps } from './types'
-import { useEditWord } from './useEditWord'
 
 export const EditWord: ComponentType<EditWordProps> = ({ id }) => {
   const { controllers, formState, isLoading, isFetching, isSaving, onSubmit, handleSubmit } =

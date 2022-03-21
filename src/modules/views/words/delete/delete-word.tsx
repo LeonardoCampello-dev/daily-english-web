@@ -5,7 +5,7 @@ import { ComponentType } from 'react'
 import { BaseButton } from 'modules/buttons'
 import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
 import { DeleteWordProps } from './types'
-import { useDeleteWordModal } from './useDeleteWord'
+import { useDeleteWordModal } from './hooks/useDeleteWord/useDeleteWord'
 
 export const DeleteWord: ComponentType<DeleteWordProps> = ({ id }) => {
   const { isDeleting, deleteWord } = useDeleteWordModal()

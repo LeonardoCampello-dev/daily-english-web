@@ -3,10 +3,10 @@ import { AddIcon } from '@chakra-ui/icons'
 import { ComponentType } from 'react'
 
 import { EditPhrase } from '../edit'
+import { usePhrasesTable } from './hooks'
 import { Table } from 'modules/layout'
 import { EditModal } from 'modules/presentational'
 import { BaseButton } from 'modules/buttons'
-import { usePhrasesTable } from './usePhrasesTable'
 
 export const PhrasesTable: ComponentType = () => {
   const { columns, isError, isFetching, isLoading, data, rows } = usePhrasesTable()

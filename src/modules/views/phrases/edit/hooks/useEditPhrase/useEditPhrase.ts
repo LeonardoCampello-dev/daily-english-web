@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo } from 'react'
 
+import { useEditPhraseForm } from '..'
 import { useIsSavingPhrase, useSavePhrase } from 'services/api/daily-english-api/mutations'
 import { PhraseCreateAndUpdateRequestDTO } from 'services/api/daily-english-api/phrase/interfaces'
 import { useGetPhraseById } from 'services/api/daily-english-api/queries'
 import { TenseEnum } from 'types'
 import { capitalize } from 'utils/formatters'
-import { useEditPhraseForm } from './useEditPhraseForm'
 
 export const useEditPhrase = ({ id }: useEditPhraseProps) => {
   const { controllers, formState, handleSubmit, setValue } = useEditPhraseForm()

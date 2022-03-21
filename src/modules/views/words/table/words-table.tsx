@@ -2,11 +2,11 @@ import { AddIcon } from '@chakra-ui/icons'
 
 import { ComponentType } from 'react'
 
-import { EditWord } from '../edit/edit-word'
+import { EditWord } from '../edit'
+import { useWordsTable } from './hooks'
 import { BaseButton } from 'modules/buttons'
 import { Table } from 'modules/layout'
 import { EditModal } from 'modules/presentational'
-import { useWordsTable } from './useWordsTable'
 
 export const WordsTable: ComponentType = () => {
   const { columns, isError, isFetching, isLoading, data, rows } = useWordsTable()

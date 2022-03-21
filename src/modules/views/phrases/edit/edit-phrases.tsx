@@ -3,6 +3,7 @@ import { Box, ButtonGroup } from '@chakra-ui/react'
 import { ComponentType } from 'react'
 
 import { EditPhraseFormSkeleton } from './components'
+import { useEditPhrase } from './hooks'
 import { BaseButton } from 'modules/buttons'
 import { BaseButtonColorsEnum } from 'modules/buttons/base-button/enums'
 import { BaseInput } from 'modules/inputs'
@@ -10,7 +11,6 @@ import { BaseFormControl } from 'modules/forms'
 import { BaseSelect } from 'modules/selects'
 import { BaseTextarea } from 'modules/textareas'
 import { EditPhraseProps } from './types'
-import { useEditPhrase } from './useEditPhrase'
 
 export const EditPhrase: ComponentType<EditPhraseProps> = ({ id }) => {
   const {

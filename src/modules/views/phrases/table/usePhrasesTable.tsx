@@ -6,6 +6,7 @@ import { NoteModal } from 'modules/presentational'
 import { useGetPhrases } from 'services/api/daily-english-api/queries'
 import { formatDate } from 'utils/formatters'
 import { EditPhrase } from '../edit'
+import { DeletePhrase } from '../delete'
 
 export const usePhrasesTable = () => {
   const columns = useMemo(() => ['Phrase', 'Translation', 'Note', 'Last update'], [])
@@ -20,7 +21,7 @@ export const usePhrasesTable = () => {
       },
       delete: {
         title: 'Delete phrase',
-        content: <Text>Delete Phrase</Text>
+        content: <DeletePhrase id={id} />
       }
     }
   }, [])

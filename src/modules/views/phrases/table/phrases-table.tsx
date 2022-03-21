@@ -1,10 +1,14 @@
+import { AddIcon } from '@chakra-ui/icons'
 import { Spinner, Center, Button } from '@chakra-ui/react'
 
 import { ComponentType } from 'react'
 
+import { EditPhrase } from '../edit'
 import { useReloadPage } from 'hooks/useReloadPage'
 import { BaseAlert } from 'modules/feedback'
 import { Table } from 'modules/layout'
+import { EditModal } from 'modules/presentational'
+import { BaseButton } from 'modules/buttons'
 import { usePhrasesTable } from './usePhrasesTable'
 
 export const PhrasesTable: ComponentType = () => {
@@ -45,5 +49,24 @@ export const PhrasesTable: ComponentType = () => {
     )
   }
 
-  return <Table columns={columns} rows={rows} rowsCount={data?.items.length} hasActions />
+  return (
+    <Table
+      columns={columns}
+      rows={rows}
+      rowsCount={data?.items.length}
+      hasActions
+      componentBeforeTable={
+        <EditModal
+          title="Add new phrase"
+          onOpenButton={
+            <BaseButton backgroundColor="primary.500" color="white" mb={2} leftIcon={<AddIcon />}>
+              Add new phrase
+            </BaseButton>
+          }
+        >
+          <EditPhrase />
+        </EditModal>
+      }
+    />
+  )
 }

@@ -17,7 +17,11 @@ export const BaseSelect: ComponentType<BaseSelectProps> = ({ controller, options
       placeholder={props.placeholder}
     >
       {options.map(({ label, value }) => {
-        return <option value={value}>{label}</option>
+        return (
+          <option key={label} value={value}>
+            {label}
+          </option>
+        )
       })}
     </Select>
   )

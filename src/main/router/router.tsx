@@ -1,8 +1,8 @@
 import { ComponentType } from 'react'
 
-import { Routes, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
-import { Home, Phrases, Words } from 'modules/views'
+import { Home, PageNotFound, Phrases, Words } from 'views'
 
 export const Router: ComponentType = () => {
   return (
@@ -10,6 +10,8 @@ export const Router: ComponentType = () => {
       <Route path="/" element={<Home />} />
       <Route path="/words" element={<Words />} />
       <Route path="/phrases" element={<Phrases />} />
+
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   )
 }

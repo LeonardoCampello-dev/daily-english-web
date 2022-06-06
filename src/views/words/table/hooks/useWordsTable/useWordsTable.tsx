@@ -3,8 +3,8 @@ import { useCallback, useMemo } from 'react'
 
 import { TableRowProps } from 'modules/layout/table/components/table-row/types'
 import { NoteModal } from 'modules/presentational'
-import { EditWord } from 'modules/views/words/edit'
-import { DeleteWord } from 'modules/views/words/delete'
+import { EditWord } from 'views/words/edit'
+import { DeleteWord } from 'views/words/delete'
 import { useGetWords } from 'services/api/daily-english-api/queries'
 import { formatDate } from 'utils/formatters'
 
